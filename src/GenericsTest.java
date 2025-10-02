@@ -4,32 +4,7 @@ public class GenericsTest {
 
     public static void main(String[] args) {
 
-        //*******************************
-        // Problems with the old way
-        // Object o = new Object();
-
-        // This used to be the way you would create an array list
-        // ArrayList oNames = new ArrayList();
-        // oNames.add("abigail");
-        // oNames.add("abigail");
-        // oNames.add(o);
-
-        // this is called casting //
-        // it's really expensive
-        // String s = (String)oNames.get(2);
-        // End the old way ************
-        //*****************************
-
-        // The new way with generics
-        // ****************************
-
-        // ArrayList<String> lstNames = new ArrayList<>();
-        // lstNames.add("a");
-        // lstNames.add("b");
-        // generics solves two issues: gets rid of casting and turns run time errors into build time errors
-
-
-        // ***********************************
+        // *********************************************************************************
         // User pair class objects to store stocks.
         Pair<String, Double> oStock1 = new Pair<>("Costco", 1000.58);
         Pair<String, Double> oStock2 = new Pair<>("Oracle", 999.24);
@@ -42,6 +17,8 @@ public class GenericsTest {
         // ********************************************************************************
         // Do not use ArrayList<Pair>
         // this will make each object in the list an object type (which is not what we want)
+        // If you want an Array List of Generics you have to instantiate the way it is done
+        // below.
         // ********************************************************************************
 
         ArrayList< Pair<String, Double> > lstStocks = new ArrayList<>();
@@ -49,16 +26,33 @@ public class GenericsTest {
         lstStocks.add(oStock2);
 
         // ArrayLists use .size() not .length()
-        for (int i = 0; i < lstStocks.size(); i++) {
-            Pair<String, Double> stock = lstStocks.get(i);
-            System.out.println("Stock details: " + stock.first + " / " + stock.second);
+//        for (int i = 0; i < lstStocks.size(); i++) {
+//            Pair<String, Double> stock = lstStocks.get(i);
+//            System.out.println("Stock details: " + stock.first + " / " + stock.second);
+//        }
+
+        // creating a place in memory
+        Triple<String, Integer, Integer>[] aoTriple;
+        Pair<String, Double>[] aoPair;
+        // ********
+        // VS
+        // ********
+        // assigning that variable in memory to the object
+        aoTriple = new Triple[5];
+        aoPair = new Pair[5];
+
+        aoTriple[0] = new Triple<>("Charges", 10, 3);
+        aoTriple[1] = new Triple<>("Rams", 9, 4);
+        aoTriple[2] = new Triple<>("Chiefs", 8, 5);
+        aoTriple[3] = new Triple<>("Ravens", 7, 6);
+        aoTriple[4] = new Triple<>("Patriots", 4, 9);
+
+        for (int i = 0; i < aoTriple.length; i++){
+            double winPercentage =
+            aoPair[i] = new Pair<>(aoTriple[i].teamName, )
         }
 
-        // ***********************************************
-        // complicated example of composition of generics
-        // lstAndroids > Android > StoryLines > Waypoints
-        // ***********************************************
-
+//        Pair<String, Double> oStock2 = new Pair<>("Oracle", 999.24);
 
     }
 }
